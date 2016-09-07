@@ -20,3 +20,19 @@ Post::~Post()
         i++;
     }
 }
+
+void Post::printPost()
+{
+    cout<<"----------------------------------"<<endl;
+    cout<<title<<endl;
+    cout<<content<<endl;
+    cout<<"----------------------------------"<<endl;
+    vector<Comment *>::iterator i = comments.begin();
+    while(i != comments.end()){
+        
+        Comment *comment = *i;
+        comment->printComment();
+        i++;
+    }
+    
+}

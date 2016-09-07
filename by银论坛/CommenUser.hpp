@@ -15,6 +15,7 @@ class CommenUser : public User
 
 public:
     
+    bool isMedorator;   //是否是版主
     
     CommenUser();
     CommenUser(string id, string nickname, string password);

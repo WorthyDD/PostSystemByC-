@@ -7,9 +7,8 @@
 int main(int argc, const char * argv[]) {
     
     
-    System *system = new System();
+    System *system = System::getInstance();
     system->initSystem();
     
-    delete system;
     return 0;
 }

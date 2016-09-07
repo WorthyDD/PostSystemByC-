@@ -15,17 +15,26 @@ using namespace std;
 class System
 {
     
-public:
+private:
     
     System();
     ~System();
+    System(const System&);
+    System& operator=(const System&);
     
+private:
+    static System* instance;
+    
+public:
+    
+    //单例
+    static System* getInstance();
     
     //所有模块
-    map<string, Model*> models;
+    map<string, Model*> *models;
     
     //所有用户
-    map<string, CommenUser*> users;
+    map<string, CommenUser*> *users;
     
     //管理员
     Administrator *administrator;

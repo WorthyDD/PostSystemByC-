@@ -27,6 +27,9 @@ public:
     //评论内容
     string content;
     
+    //打印评论
+    void printComment();
+    
     
 };
 

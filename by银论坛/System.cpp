@@ -1,6 +1,13 @@
 #include "System.hpp"
 
 
+System* System::instance = new System();
+    
+System* System::getInstance(){
+    
+    return instance;
+}
+
 System::System()
 {
     administrator = new Administrator();
@@ -12,6 +19,8 @@ System::~System()
 {
     
 }
+
+
 
 void System::initSystem()
 {
@@ -41,8 +50,10 @@ void System::initSystem()
                         //管理员登录成功
                         cout<<"管理员登录成功!"<<endl;
                         administrator->printUser();
+                        administrator->work();
                         break;
                     }
+                    cout<<"用户名或密码错误"<<endl;
                 }
                 break;
             }
@@ -62,6 +73,7 @@ void System::initSystem()
 
 void System::loadUser()
 {
+    users = new map<string, CommenUser*>();
     cout<<"加载用户列表..."<<endl;
     char buffer[256];
     fstream outFile;
@@ -79,12 +91,12 @@ void System::loadUser()
         if(isModerator == "0"){
             CommenUser *user = new CommenUser(strs[0], strs[1], strs[3]);
             user->printUser();
-            users.insert(pair<string, CommenUser*>(user->id, user));
+            users->insert(pair<string, CommenUser*>(user->id, user));
         }
         else{
             Moderator *moderator = new Moderator(strs[0], strs[1], strs[3]);
             moderator->printUser();
-            users.insert(pair<string, CommenUser*>(moderator->id, moderator));
+            users->insert(pair<string, CommenUser*>(moderator->id, moderator));
         }
         
     }
@@ -93,6 +105,7 @@ void System::loadUser()
 
 void System::loadModel()
 {
+    models = new map<string, Model*>();
     cout<<"加载板块列表..."<<endl;
     char buffer[256];
     fstream outFile;
@@ -106,10 +119,10 @@ void System::loadModel()
         }
         vector<string> strs = split(string(buffer), " ");
         string modelUserID = strs[1];
-        map<string, CommenUser*>::iterator i = users.find(modelUserID);
+        map<string, CommenUser*>::iterator i = users->find(modelUserID);
         Moderator *moderator = (Moderator *)i->second;
         Model *model = new Model(strs[0], moderator);
-        models.insert(pair<string, Model*>(moderator->id, model));
+        models->insert(pair<string, Model*>(moderator->id, model));
     }
     outFile.close();
 }

@@ -17,6 +17,10 @@ class Model
     
 public:
     
+    Model();
+    Model(string name, Moderator *moderator);
+    ~Model();
+    
     //板块名
     string name;
     
@@ -26,9 +30,11 @@ public:
     //帖子
     vector<Post*> posts;
     
-    Model();
-    Model(string name, Moderator *moderator);
-    ~Model();
+    //打印模块的基本信息
+    void printModel();
+    
+    //查看该版本下所有的帖子
+    void scanAllPosts();
     
 };
 

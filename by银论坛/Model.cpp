@@ -21,3 +21,19 @@ Model::~Model()
         i++;
     }
 }
+
+void Model::printModel()
+{
+    cout<<"板块名称 : "<<name<<", 版主 : "<<moderator->nickname<<", 版主ID : "<<moderator->id<<", 帖子数量 : "<<posts.size()<<endl;
+}
+
+void Model::scanAllPosts()
+{
+    vector<Post*>::iterator i = posts.begin();
+    while(i != posts.end()){
+        
+        Post *post = *i;
+        post->printPost();
+        i++;
+    }
+}

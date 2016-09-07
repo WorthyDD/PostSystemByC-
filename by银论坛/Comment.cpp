@@ -17,3 +17,8 @@ Comment::~Comment()
         delete this->user;
     }
 }
+
+void Comment::printComment()
+{
+    cout<<content<<"    评论者---"<<user->nickname<<", "<<time<<endl;
+}

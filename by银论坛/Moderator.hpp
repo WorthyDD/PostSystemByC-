@@ -16,8 +16,10 @@ public:
     
     Moderator();
     Moderator(string id, string nickname, string password);
-    
+    Moderator(CommenUser *user);
     ~Moderator();
+    
+    string getName();
     
     //删帖：删除其管理版块下的某一帖子
     void deletePost();

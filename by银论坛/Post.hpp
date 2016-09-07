@@ -37,6 +37,10 @@ public:
     Post();
     Post(string id, string title, time_t time, string content);
     ~Post();
+    
+    //打印帖子
+    void printPost();
+    
 };
 
 #endif /* Post_hpp */
