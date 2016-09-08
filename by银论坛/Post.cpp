@@ -1,8 +1,11 @@
 #include "Post.hpp"
 
-Post::Post(){}
+Post::Post()
+{
+    comments = new map<string, Comment*>();
+}
 
-Post::Post(string id, string title, time_t time, string content)
+Post::Post(string id, string title, string time, string content):Post::Post()
 {
     this->id = id;
     this->title = title;
@@ -13,12 +16,7 @@ Post::Post(string id, string title, time_t time, string content)
 Post::~Post()
 {
     
-    vector<Comment *>::iterator i = comments.begin();
-    while(i != comments.end()){
-        
-        delete *i;
-        i++;
-    }
+    delete comments;
 }
 
 void Post::printPost()
@@ -26,11 +24,12 @@ void Post::printPost()
     cout<<"----------------------------------"<<endl;
     cout<<title<<endl;
     cout<<content<<endl;
+    cout<<time<<endl;
     cout<<"----------------------------------"<<endl;
-    vector<Comment *>::iterator i = comments.begin();
-    while(i != comments.end()){
+    map<string, Comment *>::iterator i = comments->begin();
+    while(i != comments->end()){
         
-        Comment *comment = *i;
+        Comment *comment = i->second;
         comment->printComment();
         i++;
     }

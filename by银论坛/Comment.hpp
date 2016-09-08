@@ -15,14 +15,14 @@ class Comment
 public:
     
     Comment();
-    Comment(CommenUser *user, time_t time, string content);
+    Comment(CommenUser *user, string time, string content);
     ~Comment();
     
     //评论者
     CommenUser *user;
     
     //评论时间
-    time_t time;
+    string time;
     
     //评论内容
     string content;

@@ -71,6 +71,7 @@ void Administrator::scanSystem()
             //找到
             Model *model = i->second;
             model->printModel();
+            model->scanAllPosts();
             break;
         }
     }

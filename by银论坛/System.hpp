@@ -49,6 +49,12 @@ private:
     //加载用户
     void loadUser();
     
+    //加载帖子
+    void loadPost();
+    
+    //加载某个模块的帖子
+    void loadPost(string postFileName, Model *model);
+    
     //分割字符串
     vector<string> split(const string &s, const string &soperator);
 };

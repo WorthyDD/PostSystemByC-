@@ -125,8 +125,92 @@ void System::loadModel()
         models->insert(pair<string, Model*>(moderator->id, model));
     }
     outFile.close();
+    
+    
+    loadPost();
 }
 
+void System::loadPost()
+{
+    //加载帖子
+    cout<<"加载帖子..."<<endl;
+//    /Users/wuxi/Documents/workspace/C++/by银论坛/by银论坛/post1
+    string name1 = "/Users/wuxi/Documents/workspace/C++/by银论坛/by银论坛/post1.txt";
+    string name2 = "/Users/wuxi/Documents/workspace/C++/by银论坛/by银论坛/post2.txt";
+    string name3 = "/Users/wuxi/Documents/workspace/C++/by银论坛/by银论坛/post3.txt";
+    string name4 = "/Users/wuxi/Documents/workspace/C++/by银论坛/by银论坛/post4.txt";
+    string filenames[4] = {name1, name2, name3, name4};
+    map<string, Model*>::iterator im = models->begin();
+    int i = 0;
+    while(im != models->end()){
+        string filename = filenames[i];
+        Model *model = im->second;
+        loadPost(filename, model);
+        
+        i++;
+        im++;
+    }
+    
+    
+}
+
+void System::loadPost(string postFileName, Model *model)
+{
+    char buffer[1024];
+    fstream outFile;
+//    outFile.open("/Users/wuxi/Documents/workspace/C++/by银论坛/by银论坛/post1", ios::in);
+    outFile.open(postFileName, ios::in);
+    while(!outFile.eof()){
+        //getline(char *,int,char) 表示该行字符达到256个或遇到换行就结束
+        outFile.getline(buffer, 1024, '\n');
+        //        cout<<buffer<<endl;
+        if(buffer[0] == '#'){
+            continue;
+        }
+        vector<string> strs = split(string(buffer), " ");
+        string postID = strs[0];
+        string userID = strs[1];
+        string title = strs[2];
+        string content = strs[3];
+        string time = strs[4];
+        string commentStr = strs[5];
+        Post *post = new Post(postID, title, time, content);
+        //查找发帖人
+        map<string, CommenUser*>::iterator ui = users->find(userID);
+        if(ui != users->end()){
+            CommenUser* user = ui->second;
+            post->user = user;
+        }
+        
+        //加载评论
+        vector<string> comments = split(commentStr, "$");
+        vector<string>::iterator ci = comments.begin();
+        while(ci != comments.end()){
+            
+            string commentStr = *ci;
+            vector<string> commentV = split(commentStr, "#");
+            vector<string>::iterator cii = commentV.begin();
+            string commentUserID = *cii;
+            cii++;
+            string commentTime = *cii;
+            cii++;
+            string commentContent = *(cii);
+            //查找评论人
+            map<string, CommenUser*>::iterator ui = users->find(commentUserID);
+            if(ui != users->end()){
+                CommenUser* user = ui->second;
+                Comment *comment = new Comment(user,commentTime, commentContent);
+                post->comments->insert(pair<string, Comment*>(commentUserID, comment));
+            }
+            
+            ci++;
+        }
+        
+        //添加帖子
+        model->posts->insert(pair<string, Post*>(post->id, post));
+    }
+    outFile.close();
+}
 
 vector<string> System:: split(const string &s, const string &soperator)
 {

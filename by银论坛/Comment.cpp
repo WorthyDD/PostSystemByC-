@@ -3,7 +3,7 @@
 
 Comment::Comment(){}
 
-Comment::Comment(CommenUser *user, time_t time, string content)
+Comment::Comment(CommenUser *user, string time, string content)
 {
     this->user = user;
     this->time = time;

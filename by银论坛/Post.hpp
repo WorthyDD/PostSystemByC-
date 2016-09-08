@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include <ctime>
 #include "Comment.hpp"
 #include "CommenUser.hpp"
@@ -20,11 +21,11 @@ public:
     //id
     string id;
     
-    //发帖人
+    //发帖人ID
     CommenUser *user;
     
     //发帖时间
-    time_t time;
+    string time;
     
     //标题
     string title;
@@ -32,10 +33,10 @@ public:
     string content;
     
     //评论列表
-    vector<Comment *> comments;
+    map<string, Comment *> *comments;
     
     Post();
-    Post(string id, string title, time_t time, string content);
+    Post(string id, string title, string time, string content);
     ~Post();
     
     //打印帖子

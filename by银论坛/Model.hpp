@@ -6,6 +6,7 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <map>
 #include "Moderator.hpp"
 #include "Post.hpp"
 
@@ -28,7 +29,7 @@ public:
     Moderator *moderator;
     
     //帖子
-    vector<Post*> posts;
+    map<string, Post*> *posts;
     
     //打印模块的基本信息
     void printModel();

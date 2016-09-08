@@ -31,6 +31,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CC559D901D8102A000D41BBB /* post1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post1.txt; sourceTree = "<group>"; };
+		CC559D911D8104A100D41BBB /* post2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post2.txt; sourceTree = "<group>"; };
+		CC559D921D8105EA00D41BBB /* post3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post3.txt; sourceTree = "<group>"; };
+		CC559D931D81066D00D41BBB /* post4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = post4.txt; sourceTree = "<group>"; };
 		CC75946F1D7FA973005BE4EE /* by银论坛 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "by银论坛"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC7594721D7FA973005BE4EE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CC7594791D7FAA5E005BE4EE /* User.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = User.cpp; sourceTree = "<group>"; };
@@ -102,6 +106,10 @@
 				CC7594941D7FDBB5005BE4EE /* Comment.cpp */,
 				CC7594971D7FE1B1005BE4EE /* model.txt */,
 				CC7594981D7FE30D005BE4EE /* user.txt */,
+				CC559D901D8102A000D41BBB /* post1.txt */,
+				CC559D911D8104A100D41BBB /* post2.txt */,
+				CC559D921D8105EA00D41BBB /* post3.txt */,
+				CC559D931D81066D00D41BBB /* post4.txt */,
 			);
 			path = "by银论坛";
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				CC7594781D7FA973005BE4EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
